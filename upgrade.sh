@@ -12,5 +12,6 @@ unzip "${FILE}.zip" > /dev/null
 rm -rf "$ZSH"
 mv "$FILE" "$ZSH"
 rm -f "${FILE}.zip"
+sed -i '/^  +rmdir .*/d' "${ZSH}/tools/check_for_upgrade.sh"
 
 printf "Update oh-my-zsh successful."

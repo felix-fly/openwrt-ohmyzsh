@@ -9,6 +9,11 @@ oh-my-zsh 官方的安装脚本需要预先安装 git 和 git-http，但是这�
 * zsh
 * ca-certificates
 
+```shell
+opkg update
+opkg install wget unzip zsh ca-certificates
+```
+
 ## 安装
 
 ```shell

@@ -64,6 +64,9 @@ setup_ohmyzsh() {
 
 	# replace upgrade.sh
 	wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"
+	# patch to check_for_upgrade.sh
+	sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
+	sed -i '/^ \+rmdir .*/d' "${ZSH}/tools/check_for_upgrade.sh"
 
 	echo
 }

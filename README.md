@@ -19,6 +19,14 @@ Package git and git-http are so large for a cheap router with a little storage.
 sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
 ```
 
+## Set zsh default
+
+```shell
+which zsh && sed -i -- 's:/bin/ash:'`which zsh`':g' /etc/passwd
+```
+
+Relogin your router, you'll see oh-my-zsh here.
+
 ## Uninstall
 
 ```shell

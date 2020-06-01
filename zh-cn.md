@@ -15,6 +15,14 @@ oh-my-zsh 官方的安装脚本需要预先安装 git 和 git-http，但是这�
 sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
 ```
 
+## 设置 zsh 为默认 shell
+
+```shell
+which zsh && sed -i -- 's:/bin/ash:'`which zsh`':g' /etc/passwd
+```
+
+重新登录到路由器，就是 oh-my-zsh 了。
+
 ## 卸载
 
 ```shell

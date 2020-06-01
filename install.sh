@@ -224,6 +224,19 @@ main() {
 	setup_zshrc
 	setup_shell
 
+	# Keep or remove plugins
+	read -r -p "Keep plugins(about 5M)? [y/N] " input
+	case $input in
+		[yY][eE][sS]|[yY])
+			echo "Yes"
+			;;
+		*)
+			echo "No"
+			rm -rf "${ZSH}/plugins"
+			sed -i '/^plugins=.*/d' ~/.zshrc
+			;;
+	esac
+
 	printf "$GREEN"
 	cat <<-'EOF'
 		         __                                     __

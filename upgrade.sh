@@ -8,6 +8,13 @@ wget "$REMOTE" -O "${FILE}.zip" || {
     exit 1
 }
 
+# check plugins status
+if [ ! -d "${ZSH}/plugins" ]; then
+    plugins=false
+else
+    plugins=true
+fi
+
 unzip "${FILE}.zip" > /dev/null
 rm -rf "$ZSH"
 mv "$FILE" "$ZSH"
@@ -19,5 +26,10 @@ wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.
 sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
 # fix for remove lock file
 mkdir "$ZSH/log/update.lock" 2>/dev/null
+
+# remove plugins
+if [[ $plugins != true ]]; then
+    rm -rf "${ZSH}/plugins"
+fi
 
 printf "Update oh-my-zsh successful."

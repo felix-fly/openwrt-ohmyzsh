@@ -17,6 +17,7 @@ rm -f "${FILE}.zip"
 wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"
 # patch to check_for_upgrade.sh
 sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
-sed -i '/^ \+rmdir .*/d' "${ZSH}/tools/check_for_upgrade.sh"
+# fix for remove lock file
+mkdir "$ZSH/log/update.lock" 2>/dev/null
 
 printf "Update oh-my-zsh successful."

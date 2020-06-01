@@ -12,6 +12,11 @@ unzip "${FILE}.zip" > /dev/null
 rm -rf "$ZSH"
 mv "$FILE" "$ZSH"
 rm -f "${FILE}.zip"
-sed -i '/^  +rmdir .*/d' "${ZSH}/tools/check_for_upgrade.sh"
+
+# replace upgrade.sh
+wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"
+# patch to check_for_upgrade.sh
+sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
+sed -i '/^ \+rmdir .*/d' "${ZSH}/tools/check_for_upgrade.sh"
 
 printf "Update oh-my-zsh successful."

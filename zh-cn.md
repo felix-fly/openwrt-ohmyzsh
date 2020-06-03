@@ -9,20 +9,20 @@ oh-my-zsh 官方的安装脚本需要预先安装 git 和 git-http，但是这�
 * zsh
 * ca-certificates
 
-```shell
+```bash
 opkg update
 opkg install wget unzip zsh ca-certificates
 ```
 
 ## 安装
 
-```shell
+```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
 ```
 
 ## 设置 zsh 为默认 shell
 
-```shell
+```bash
 which zsh && sed -i -- 's:/bin/ash:'`which zsh`':g' /etc/passwd
 ```
 
@@ -30,6 +30,6 @@ which zsh && sed -i -- 's:/bin/ash:'`which zsh`':g' /etc/passwd
 
 ## 卸载
 
-```shell
+```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh)"
 ```

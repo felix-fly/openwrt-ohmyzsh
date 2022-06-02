@@ -1,10 +1,9 @@
 #!/bin/sh
 
-REMOTE=${REMOTE:-https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master}
-FILE=${FILE:-ohmyzsh-master}
+REMOTE=${REMOTE:-https://codeload.github.com/ohmyzsh/ohmyzsh/tar.gz/refs/heads/master}
 
-wget "$REMOTE" -O "${FILE}.zip" || {
-    printf "Update oh-my-zsh failed."
+wget "$REMOTE" -O- | tar xz -C "$ZSH" --strip-components 1 > /dev/null || {
+    printf "Download oh-my-zsh failed"
     exit 1
 }
 
@@ -14,11 +13,6 @@ if [ ! -d "${ZSH}/plugins" ]; then
 else
     plugins=true
 fi
-
-unzip "${FILE}.zip" > /dev/null
-rm -rf "$ZSH"
-mv "$FILE" "$ZSH"
-rm -f "${FILE}.zip"
 
 # replace upgrade.sh
 wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"

@@ -4,8 +4,7 @@ set -e
 
 # Default settings
 ZSH=${ZSH:-~/.oh-my-zsh}
-REMOTE=${REMOTE:-https://codeload.github.com/ohmyzsh/ohmyzsh/zip/master}
-FILE=${FILE:-ohmyzsh-master}
+REMOTE=${REMOTE:- https://codeload.github.com/ohmyzsh/ohmyzsh/tar.gz/refs/heads/master}
 
 # Other options
 CHSH=${CHSH:-yes}
@@ -44,23 +43,15 @@ setup_ohmyzsh() {
 		echo "${YELLOW}Zsh is not installed.${RESET} Please install wget first."
 		exit 1
 	fi
-    if ! command_exists unzip; then
-		echo "${YELLOW}Zsh is not installed.${RESET} Please install unzip first."
-		exit 1
-	fi
 
 	umask g-w,o-w
 
 	echo "${BLUE}Download Oh My Zsh...${RESET}"
 
-	wget "$REMOTE" -O "${FILE}.zip" || {
+	wget "$REMOTE" -O- | tar xz -C "$ZSH" --strip-components 1 > /dev/null || {
 		error "Download oh-my-zsh failed"
 		exit 1
 	}
-
-    unzip "${FILE}.zip" > /dev/null
-    mv "$FILE" "$ZSH"
-	rm -f "${FILE}.zip"
 
 	# replace upgrade.sh
 	wget https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"

@@ -9,13 +9,12 @@ Package git and git-http are so large for a cheap router with a little storage.
 ## dependence packages
 
 * wget
-* unzip
 * zsh
 * ca-certificates
 
 ```bash
 opkg update
-opkg install wget unzip zsh ca-certificates
+opkg install wget zsh ca-certificates
 ```
 
 ## Install

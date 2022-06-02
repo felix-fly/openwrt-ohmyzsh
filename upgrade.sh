@@ -2,7 +2,7 @@
 
 REMOTE=${REMOTE:-https://codeload.github.com/ohmyzsh/ohmyzsh/tar.gz/refs/heads/master}
 
-curl "$REMOTE" | tar xz -C "$ZSH" --strip-components 1 > /dev/null || {
+curl "$REMOTE" | tar xz -C "$ZSH" > /dev/null || {
     printf "Download oh-my-zsh failed"
     exit 1
 }

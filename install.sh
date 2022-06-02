@@ -43,7 +43,8 @@ setup_ohmyzsh() {
 
 	echo "${BLUE}Download Oh My Zsh...${RESET}"
 
-	curl "$REMOTE" | tar xz -C "$ZSH" --strip-components 1 > /dev/null || {
+	mkdir -p "$ZSH"
+	curl "$REMOTE" | tar xz -C "$ZSH" > /dev/null || {
 		error "Download oh-my-zsh failed"
 		exit 1
 	}

@@ -14,7 +14,7 @@ opkg install zsh
 ## 安装
 
 ```bash
-curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
 ```
 
 ## 设置 zsh 为默认 shell
@@ -28,5 +28,20 @@ which zsh && sed -i -- 's:/bin/ash:'`which zsh`':g' /etc/passwd
 ## 卸载
 
 ```bash
-curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh)"
+```
+
+## 问题解决
+
+如果遇到这样的错误提示:
+
+```bash
+regexp-replace:28: failed to load module: zsh/regex
+regexp-replace:28: -regex-match not available for regex
+```
+
+可以删除下面的文件来解决。
+
+```bash
+mv ~/.oh-my-zsh/lib/vcs_info.zsh ~/.oh-my-zsh/lib/vcs_info.zsh.bak
 ```

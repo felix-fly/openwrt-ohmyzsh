@@ -34,3 +34,18 @@ Relogin your router, you'll see oh-my-zsh here.
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh)"
 ```
+
+## Issues
+
+If you meet this error:
+
+```bash
+regexp-replace:28: failed to load module: zsh/regex
+regexp-replace:28: -regex-match not available for regex
+```
+
+You can remove the following file to fix it.
+
+```bash
+mv ~/.oh-my-zsh/lib/vcs_info.zsh ~/.oh-my-zsh/lib/vcs_info.zsh.bak
+```

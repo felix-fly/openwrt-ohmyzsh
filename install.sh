@@ -43,14 +43,14 @@ setup_ohmyzsh() {
 
 	echo "${BLUE}Download Oh My Zsh...${RESET}"
 
-	mkdir -p "$ZSH"
-	curl "$REMOTE" | tar xz -C "$ZSH" > /dev/null || {
+	curl $REMOTE | tar xz -C /tmp > /dev/null || {
 		error "Download oh-my-zsh failed"
 		exit 1
 	}
+	mv /tmp/ohmyzsh-master $ZSH
 
 	# replace upgrade.sh
-	curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O "${ZSH}/tools/upgrade.sh"
+	curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O ${ZSH}/tools/upgrade.sh
 	# patch to check_for_upgrade.sh
 	sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
 

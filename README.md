@@ -8,19 +8,17 @@ Package git and git-http are so large for a cheap router with a little storage.
 
 ## dependence packages
 
-* wget
 * zsh
-* ca-certificates
 
 ```bash
 opkg update
-opkg install wget zsh ca-certificates
+opkg install zsh
 ```
 
 ## Install
 
 ```bash
-sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
+curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh | sh
 ```
 
 ## Set zsh default
@@ -34,5 +32,5 @@ Relogin your router, you'll see oh-my-zsh here.
 ## Uninstall
 
 ```bash
-sh -c "$(wget -O- https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh)"
+curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh | sh
 ```

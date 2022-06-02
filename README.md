@@ -18,7 +18,7 @@ opkg install zsh
 ## Install
 
 ```bash
-curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/install.sh)"
 ```
 
 ## Set zsh default
@@ -32,5 +32,5 @@ Relogin your router, you'll see oh-my-zsh here.
 ## Uninstall
 
 ```bash
-curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/uninstall.sh)"
 ```

@@ -1,11 +1,14 @@
 #!/bin/sh
 
+ZSH=${ZSH:-~/.oh-my-zsh}
 REMOTE=${REMOTE:-https://codeload.github.com/ohmyzsh/ohmyzsh/tar.gz/refs/heads/master}
 
-curl "$REMOTE" | tar xz -C "$ZSH" > /dev/null || {
+curl $REMOTE | tar xz -C /tmp > /dev/null || {
     printf "Download oh-my-zsh failed"
     exit 1
 }
+cp -rf /tmp/ohmyzsh-master/* $ZSH
+rm -rf /tmp/ohmyzsh-master
 
 # check plugins status
 if [ ! -d "${ZSH}/plugins" ]; then

@@ -50,7 +50,7 @@ setup_ohmyzsh() {
 	mv /tmp/ohmyzsh-master $ZSH
 
 	# replace upgrade.sh
-	curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh -O ${ZSH}/tools/upgrade.sh
+	curl https://raw.githubusercontent.com/felix-fly/openwrt-ohmyzsh/master/upgrade.sh > ${ZSH}/tools/upgrade.sh
 	# patch to check_for_upgrade.sh
 	sed -i '/^whence git.*/d' "${ZSH}/tools/check_for_upgrade.sh"
 
